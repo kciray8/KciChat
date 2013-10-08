@@ -33,7 +33,7 @@ public class Chat extends JFrame implements ActionListener {
         this.socket = socket;
         setSize(new Dimension(600, 400));
         setTitle("Чат");
-        addMessage("Чат успешно запущен");
+        addHtml(getFormattedTime() + " <i>Чат успешно запущен</i>");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Container mainContainer = getContentPane();
@@ -42,6 +42,7 @@ public class Chat extends JFrame implements ActionListener {
         mainContainer.add(chatViewer);
 
         messageField.setMaximumSize(new Dimension(500, messageField.getMinimumSize().height));
+        messageField.addActionListener(this);
 
         JPanel ctrlPanel = GUI.createHPanel(messageField, sendMessageButton);
         mainContainer.add(ctrlPanel);
@@ -51,9 +52,20 @@ public class Chat extends JFrame implements ActionListener {
         GUI.toScreenCenter(this);
 
         chatEventListener = new ChatEventListener(this);
+
+        setFocusToInputField();
     }
 
-    public static String getFormattedTime(){
+    private void setFocusToInputField() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                messageField.grabFocus();
+            }
+        });
+    }
+
+    public static String getFormattedTime() {
         String time = String.format("[%tT]", new Date());
         return "<span style='color:#010298'>" + time + "</span> ";
     }
@@ -74,15 +86,23 @@ public class Chat extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sendMessageButton) {
-            String strMessage = messageField.getText();
-            if (!strMessage.equals("")) {
-                messageField.setText("");
-                addMessage(strMessage);
+            sendMessage();
+        }
+        if (e.getSource() == messageField) {
+            sendMessage();
+        }
+    }
 
-                Message messageToServer = new Message(Message.Type.SendMessage);
-                messageToServer.setContent(strMessage);
-                messageToServer.sendToSocket(socket);
-            }
+    private void sendMessage() {
+        String strMessage = messageField.getText();
+        if (!strMessage.equals("")) {
+            messageField.setText("");
+            addMessage(strMessage);
+
+            Message messageToServer = new Message(Message.Type.SendMessage);
+            messageToServer.setContent(strMessage);
+            messageToServer.sendToSocket(socket);
+            setFocusToInputField();
         }
     }
 

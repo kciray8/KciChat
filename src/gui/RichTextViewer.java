@@ -4,15 +4,12 @@ import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 
 /**
  * @author KciRay (http://habrahabr.ru/users/kciray/)
  */
-public class RichTextViewer extends JScrollPane{
+public class RichTextViewer extends JScrollPane {
     JEditorPane editorPane = new JEditorPane();
 
     public RichTextViewer() {
@@ -22,7 +19,7 @@ public class RichTextViewer extends JScrollPane{
         editorPane.setVisible(true);
 
         setViewportView(editorPane);
-        setBorder(BorderFactory.createLineBorder(null,0));
+        setBorder(BorderFactory.createLineBorder(null, 0));
     }
 
     public void addHtml(String html) {
@@ -37,7 +34,16 @@ public class RichTextViewer extends JScrollPane{
             e.printStackTrace();
         }
 
-        JScrollBar vertical = getVerticalScrollBar();
-        vertical.setValue(vertical.getMaximum());
+        //Scroll to down after insert
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+
+
+                JScrollBar vertical = getVerticalScrollBar();
+                vertical.setValue(vertical.getMaximum());
+            }
+        });
+
     }
 }

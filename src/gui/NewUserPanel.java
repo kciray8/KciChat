@@ -37,6 +37,7 @@ public class NewUserPanel extends JFrame implements ActionListener {
         add(okButton);
 
         setSize(300, 90);
+
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Введите ваши данные");
         GUI.toScreenCenter(this);

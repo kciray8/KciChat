@@ -41,15 +41,9 @@ public class ConnectPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == connectButton) {
             try {
-                String[] ipStr = ipField.getText().split("\\.");
-                byte[] ip = new byte[4];
-
-                for(int i=0;i<4;i++){
-                    ip[i] = Byte.parseByte(ipStr[i]);
-                }
                 int port = Integer.parseInt(portField.getText());
 
-                Socket socket = new Socket(InetAddress.getByAddress(ip), port);
+                Socket socket = new Socket(InetAddress.getByName(ipField.getText()), port);
 
                 NewUserPanel userPanel = new NewUserPanel(socket);
                 userPanel.setVisible(true);
