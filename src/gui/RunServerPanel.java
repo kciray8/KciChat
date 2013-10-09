@@ -19,7 +19,6 @@ public class RunServerPanel extends JPanel implements ActionListener {
         this.mainPanel = mainPanel;
 
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        //boxLayout.
         setLayout(boxLayout);
 
         JLabel portLabel = new JLabel("Порт для прослушивания ");

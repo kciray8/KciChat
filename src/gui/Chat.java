@@ -42,9 +42,7 @@ public class Chat extends JFrame implements ActionListener {
         messageField.addActionListener(this);
 
         JPanel ctrlPanel = GUI.createHPanel(messageField, sendMessageButton);
-
         JPanel viewerPanel = GUI.createHPanel(chatViewer);
-
         JPanel chatPanel = GUI.createVPanel(viewerPanel, ctrlPanel);
         getContentPane().add(chatPanel);
 

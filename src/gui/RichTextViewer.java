@@ -38,8 +38,6 @@ public class RichTextViewer extends JScrollPane {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-
-
                 JScrollBar vertical = getVerticalScrollBar();
                 vertical.setValue(vertical.getMaximum());
             }
