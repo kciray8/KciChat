@@ -1,4 +1,5 @@
 import gui.MainPanel;
+import utils.GUI;
 
 import javax.swing.*;
 
@@ -10,6 +11,8 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
+        GUI.setNimbusLookAndFeel();
+
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

@@ -19,7 +19,7 @@ public class RichTextViewer extends JScrollPane {
         editorPane.setVisible(true);
 
         setViewportView(editorPane);
-        setBorder(BorderFactory.createLineBorder(null, 0));
+        //setBorder(BorderFactory.createLineBorder(null, 0));
     }
 
     public void addHtml(String html) {

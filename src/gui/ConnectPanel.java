@@ -4,6 +4,7 @@ import utils.GUI;
 import utils.Q;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class ConnectPanel extends JPanel implements ActionListener {
 
         connectButton = new JButton("Подключиться");
         connectButton.addActionListener(this);
+        connectButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(connectButton);
     }
 

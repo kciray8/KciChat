@@ -4,6 +4,7 @@ import core.KciServer;
 import utils.GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -16,7 +17,10 @@ public class RunServerPanel extends JPanel implements ActionListener {
 
     public RunServerPanel(MainPanel mainPanel) {
         this.mainPanel = mainPanel;
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        //boxLayout.
+        setLayout(boxLayout);
 
         JLabel portLabel = new JLabel("Порт для прослушивания ");
         portField.setText("888");
@@ -24,6 +28,7 @@ public class RunServerPanel extends JPanel implements ActionListener {
 
         add(portPanel);
         runButton.addActionListener(this);
+        runButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(runButton);
     }
 

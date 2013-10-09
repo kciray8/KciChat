@@ -23,19 +23,18 @@ public class MainPanel extends JFrame implements ActionListener {
         //Configure frame
         setSize(500, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        Container mainContainer = getContentPane();
-        mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.Y_AXIS));
+        setResizable(false);
 
         rbCreateServer.addActionListener(this);
         rbConnectToServer.addActionListener(this);
 
         JPanel rbPanel = GUI.createHPanel(rbCreateServer, rbConnectToServer);
-        mainContainer.add(rbPanel);
         GUI.groupRadioButtons(rbCreateServer, rbConnectToServer);
 
         selectedPanel.setLayout(new BoxLayout(selectedPanel, BoxLayout.Y_AXIS));
-        mainContainer.add(selectedPanel);
+
+        JPanel mainPanel = GUI.createVPanel(rbPanel, selectedPanel);
+        getContentPane().add(mainPanel);
 
         runServerPanel = new RunServerPanel(this);
         connectToServerPanel = new ConnectPanel(this);
@@ -45,8 +44,8 @@ public class MainPanel extends JFrame implements ActionListener {
     }
 
     private void createMenu() {
-
-/*        JMenuBar menuBar = new JMenuBar();
+    /*
+        JMenuBar menuBar = new JMenuBar();
         JMenu menuAbout = new JMenu("О программе");
         menuBar.add(menuAbout);
 

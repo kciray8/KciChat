@@ -33,22 +33,22 @@ public class Chat extends JFrame implements ActionListener {
         this.socket = socket;
         setSize(new Dimension(600, 400));
         setTitle("Чат");
+
         addHtml(getFormattedTime() + " <i>Чат успешно запущен</i>");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        Container mainContainer = getContentPane();
-        mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.Y_AXIS));
 
-        mainContainer.add(chatViewer);
-
-        messageField.setMaximumSize(new Dimension(500, messageField.getMinimumSize().height));
+        messageField.setMaximumSize(new Dimension(5000, messageField.getMinimumSize().height));
         messageField.addActionListener(this);
 
         JPanel ctrlPanel = GUI.createHPanel(messageField, sendMessageButton);
-        mainContainer.add(ctrlPanel);
+
+        JPanel viewerPanel = GUI.createHPanel(chatViewer);
+
+        JPanel chatPanel = GUI.createVPanel(viewerPanel, ctrlPanel);
+        getContentPane().add(chatPanel);
 
         sendMessageButton.addActionListener(this);
-
         GUI.toScreenCenter(this);
 
         chatEventListener = new ChatEventListener(this);

@@ -25,22 +25,25 @@ public class NewUserPanel extends JFrame implements ActionListener {
 
     public NewUserPanel(Socket socket) throws HeadlessException {
         this.socket = socket;
-        Container mainContainer = getContentPane();
-        mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.Y_AXIS));
 
         JLabel label = new JLabel("Ник");
         nickField.setText("");
         JPanel panel = GUI.createHPanel(label, nickField);
 
-        mainContainer.add(panel);
         okButton.addActionListener(this);
-        add(okButton);
+        okButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        setSize(300, 90);
+        JPanel nickEnterPanel = GUI.createVPanel(panel, okButton);
+        getContentPane().add(nickEnterPanel);
+
+        setResizable(false);
+        setMinimumSize(new Dimension(300, getMinimumSize().height));
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Введите ваши данные");
         GUI.toScreenCenter(this);
+
+        pack();
     }
 
     @Override
@@ -56,13 +59,13 @@ public class NewUserPanel extends JFrame implements ActionListener {
                 Message msgFromServer = new Message(reader.readLine());
                 Q.out(msgFromServer);
 
-                if(msgFromServer.isResponse()){
-                    if(msgFromServer.getContent().equals(Message.Response.NickNotCorrect.toString())){
+                if (msgFromServer.isResponse()) {
+                    if (msgFromServer.getContent().equals(Message.Response.NickNotCorrect.toString())) {
                         JOptionPane.showMessageDialog(this, "Вы ввели некорректный ник!");
                         return;
                     }
                     if (msgFromServer.getContent().equals(Message.Response.Ok.toString())) {
-                        Chat chat = new Chat(newUser,socket);
+                        Chat chat = new Chat(newUser, socket);
                         chat.setVisible(true);
 
                         dispose();
