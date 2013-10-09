@@ -1,5 +1,4 @@
-KciChat
-=======
+##О программе KciChat
 Простой пример чата. Я создал его исключительно для демонстрации своих знаний и навыков программирования на Java. Написал чат с нуля - от начала до конца.
 
 ##Архитектура
@@ -12,11 +11,11 @@ KciChat
 Исходный код разбит состоит из классов, которые сгруппированы в 3 пакета - core, gui и utils - соответственно для основных классов, классов, реализующих интерфейс и вспомогательных классов.
 
 ##Демонстрация знаний
-*Тонкости построения интерфейса - работа с JFrame, JPanel, JRadioButton, JButton, JTextField, JScrollPane, BoxLayout, JEditorPane и обработка событий, связанных с ними
-*Работа с сетью - Socket, ServerSocket
-*Библиотека JDOM - работа с XML в Java и использование таких её классов, как `SAXBuilder`, Document, Element, XMLOutputter
-*Ввод-вывод из потока - BufferedReader, InputStreamReader, OutputStream
-*Работа с коллекциями - LinkedList
-*Паттерны проектирования - Singleton
-*Основы Java - работа с классами, пакетами, enum
-*Создание jar-архива и запаковка его в итоговый exe-файл для OC Windows
+* Тонкости построения интерфейса - работа с JFrame, JPanel, JRadioButton, JButton, JTextField, JScrollPane, BoxLayout, JEditorPane и обработка событий, связанных с ними
+* Работа с сетью - Socket, ServerSocket
+* Библиотека JDOM - работа с XML в Java и использование таких её классов, как SAXBuilder, Document, Element, XMLOutputter
+* Ввод-вывод из потока - BufferedReader, InputStreamReader, OutputStream
+* Работа с коллекциями - LinkedList
+* Паттерны проектирования - Singleton
+* Основы Java - работа с классами, пакетами, enum
+* Создание jar-архива и запаковка его в итоговый exe-файл для OC Windows
