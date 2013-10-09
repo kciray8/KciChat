@@ -2,6 +2,7 @@ package gui;
 
 import core.Message;
 import core.User;
+import gui.base.KTextField;
 import utils.GUI;
 import utils.Q;
 
@@ -18,7 +19,7 @@ import java.net.Socket;
  * @author KciRay (http://habrahabr.ru/users/kciray/)
  */
 public class NewUserPanel extends JFrame implements ActionListener {
-    private final JTextField nickField = new JTextField();
+    private final KTextField nickField = new KTextField();
     private final JButton okButton = new JButton("Войти в чат");
     private Socket socket;
     private User newUser = new User();

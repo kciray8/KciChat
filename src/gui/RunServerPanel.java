@@ -1,6 +1,7 @@
 package gui;
 
 import core.KciServer;
+import gui.base.KTextField;
 import utils.GUI;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class RunServerPanel extends JPanel implements ActionListener {
 
     private final JButton runButton = new JButton("Запустить сервер");
-    private final JTextField portField = new JTextField(5);
+    private final KTextField portField = new KTextField();
     private MainPanel mainPanel;
 
     public RunServerPanel(MainPanel mainPanel) {

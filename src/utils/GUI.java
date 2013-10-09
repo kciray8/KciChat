@@ -1,7 +1,13 @@
 package utils;
 
+import com.sun.imageio.plugins.common.ImageUtil;
+
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 /**
  * Quick & simple do some GUI functions
@@ -56,5 +62,51 @@ public class GUI {
        // panel.add(Box.createRigidArea(new Dimension(0, margin)));
 
         return panel;
+    }
+
+    public static void addDefaultContextMenu(final JTextComponent textComponent){
+        JPopupMenu popup = new JPopupMenu();
+        textComponent.add(popup);
+        textComponent.setComponentPopupMenu(popup);
+
+        JMenuItem copyItem = new JMenuItem("Copy");
+        copyItem.setIcon(createImageIcon("/img/copy.png"));
+        copyItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK));
+        copyItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                textComponent.copy();
+            }
+        });
+        popup.add(copyItem);
+
+        JMenuItem pasteItem = new JMenuItem("Paste");
+        pasteItem.setIcon(createImageIcon("/img/paste.png"));
+        pasteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK));
+        pasteItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                textComponent.paste();
+            }
+        });
+        popup.add(pasteItem);
+
+        JMenuItem cutItem = new JMenuItem("Cut");
+        cutItem.setIcon(createImageIcon("/img/cut.png"));
+        cutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK));
+        cutItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                textComponent.cut();
+            }
+        });
+        popup.add(cutItem);
+    }
+
+    protected static ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = GUI.class.getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find image file: " + path);
+            return null;
+        }
     }
 }

@@ -3,6 +3,7 @@ package gui;
 import core.ChatEventListener;
 import core.Message;
 import core.User;
+import gui.base.KTextField;
 import utils.GUI;
 
 import javax.swing.*;
@@ -17,7 +18,7 @@ import java.util.Date;
  */
 public class Chat extends JFrame implements ActionListener {
     RichTextViewer chatViewer = new RichTextViewer();
-    JTextField messageField = new JTextField();
+    KTextField messageField = new KTextField();
     JButton sendMessageButton = new JButton("Сказать");
     User user;
     private final ChatEventListener chatEventListener;
@@ -89,6 +90,7 @@ public class Chat extends JFrame implements ActionListener {
         if (e.getSource() == messageField) {
             sendMessage();
         }
+        setFocusToInputField();
     }
 
     private void sendMessage() {
@@ -100,7 +102,6 @@ public class Chat extends JFrame implements ActionListener {
             Message messageToServer = new Message(Message.Type.SendMessage);
             messageToServer.setContent(strMessage);
             messageToServer.sendToSocket(socket);
-            setFocusToInputField();
         }
     }
 

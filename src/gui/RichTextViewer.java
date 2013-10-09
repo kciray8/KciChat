@@ -1,5 +1,7 @@
 package gui;
 
+import utils.GUI;
+
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
@@ -20,6 +22,7 @@ public class RichTextViewer extends JScrollPane {
 
         setViewportView(editorPane);
         //setBorder(BorderFactory.createLineBorder(null, 0));
+        GUI.addDefaultContextMenu(editorPane);
     }
 
     public void addHtml(String html) {

@@ -1,5 +1,6 @@
 package gui;
 
+import gui.base.KTextField;
 import utils.GUI;
 import utils.Q;
 
@@ -15,8 +16,8 @@ import java.util.Arrays;
 public class ConnectPanel extends JPanel implements ActionListener {
 
     private final JButton connectButton;
-    private final JTextField portField = new JTextField(8);
-    private final JTextField ipField = new JTextField(8);
+    private final KTextField portField = new KTextField();
+    private final KTextField ipField = new KTextField();
     private MainPanel mainPanel;
 
     public ConnectPanel(MainPanel mainPanel) {
